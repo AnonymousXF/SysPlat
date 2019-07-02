@@ -10,6 +10,7 @@ def create_app(configname):
     app = Flask(__name__)
     app.secret_key = config[configname].SECRET_KEY
     app.config['SQLALCHEMY_DATABASE_URI'] = config[configname].SQLALCHEMY_DATABASE_URI
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config[configname].SQLALCHEMY_TRACK_MODIFICATIONS
 
     # plugin initial
     db.init_app(app)
