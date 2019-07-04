@@ -12,6 +12,17 @@
     width: 640px;
     height: 360px;
     background-color: rgba(0,0,0,0.3);
+}
+.login_header{
+    width: 100%;
+    background-color: #393939;
+    color: #ffffff;
+    font-size: 1.4rem;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+}
+.login_form{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +32,10 @@
 {% block content %}
     <div class="wrap">
         <div class="login">
+            <div class="login_header">Welcome</div>
+            <div class="login_form">
 
+            </div>
         </div>
     </div>
     <script type="text/javascript" opacity='0.5' zIndex="-2" count="150" src="{{ url_for('static', filename='js/canvas-nest.js') }}"></script>
