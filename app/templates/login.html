@@ -1,8 +1,28 @@
 {% extends "base.html" %}
 {% block title%}登陆{% endblock %}
 {% block head %}
-
+<style>
+.wrap{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login{
+    width: 640px;
+    height: 360px;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
 {% endblock %}
 {% block content %}
-    Login Page
+    <div class="wrap">
+        <div class="login">
+
+        </div>
+    </div>
+    <script type="text/javascript" opacity='0.5' zIndex="-2" count="150" src="{{ url_for('static', filename='js/canvas-nest.js') }}"></script>
 {% endblock %}
