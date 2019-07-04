@@ -15,7 +15,3 @@ class User(db.Model):
     role = db.Column(db.Integer, default=0x1)   # 普通用户0x1，admin用户0xf
     last_visit_ip = db.Column(db.String(20))
     last_visit_time = db.Column(db.DateTime, default=datetime.utcnow)
-
-'''
-机柜  槽位  机型  环境  组件规划  操作系统  大网  小网  IPMI地址  IPMI调试  IPMI调试  负责人  项目  资产编号
-'''    
