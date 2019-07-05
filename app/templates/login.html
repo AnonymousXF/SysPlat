@@ -23,9 +23,8 @@
     text-align: center;
 }
 .login_form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 </style>
 {% endblock %}
@@ -34,7 +33,18 @@
         <div class="login">
             <div class="login_header">Welcome</div>
             <div class="login_form">
-
+                <form>
+                    <div class="form-group">
+                        <label for="UserNameInput">UserName:</label>
+                        <input class="form-control" id="UserNameInput" placeholder="Please Input UserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="PasswordInput">Password:</label>
+                        <input type="password" class="form-control" id="PasswordInput" placeholder="Please Input Password">
+                    </div>
+                    <button type="button" class="btn btn-success" >Register</button>
+                    <button type="button" class="btn btn-success" style="float: right">Submit</button>
+                </form>
             </div>
         </div>
     </div>
