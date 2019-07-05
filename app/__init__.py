@@ -15,8 +15,8 @@ def create_app(configname):
     db.init_app(app)
 
     # register blueprint
-    from .login import login as login_blueprint
-    app.register_blueprint(login_blueprint, url_prefix='/')
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='/')
 
     return app
 
