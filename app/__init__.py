@@ -16,7 +16,9 @@ def create_app(configname):
 
     # register blueprint
     from .auth import auth as auth_blueprint
+    from .index import index as index_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/')
+    app.register_blueprint(index_blueprint, url_prefix='/index')
 
     return app
 
