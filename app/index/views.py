@@ -5,4 +5,4 @@ from . import index
 
 @index.route('/', methods=['GET'])
 def dashboard():
-    return render_template("index.html")
+    return render_template("index.html", user=g.user)
