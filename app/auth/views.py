@@ -24,3 +24,9 @@ def login():
             flash("Wrong Username or Password!")
             return render_template("login.html")
 
+
+@auth.route('/logout', methods=['POST', 'GET'])
+def logout():
+    session.pop('user_id')
+    flash("Logout Successfully!")
+    return redirect(url_for("auth.login"))
