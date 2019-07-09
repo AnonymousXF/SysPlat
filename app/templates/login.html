@@ -49,9 +49,28 @@
                         <label for="PasswordInput"><strong>Password:</strong></label>
                         <input type="password" class="form-control" id="PasswordInput" name="password" placeholder="Please Input Password">
                     </div>
-                    <button type="button" class="btn btn-success" >Register</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Register</button>
                     <button type="submit" class="btn btn-success" style="float: right">Submit</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Body
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Confirm</button>
+                </div>
             </div>
         </div>
     </div>
