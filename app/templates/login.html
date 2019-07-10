@@ -43,7 +43,7 @@
                 <form method="POST">
                     <div class="form-group">
                         <label for="UserNameInput"><strong>UserName:</strong></label>
-                        <input class="form-control" id="UserNameInput" name="username" placeholder="Please Input UserName">
+                        <input type="text" class="form-control" id="UserNameInput" name="username" placeholder="Please Input UserName">
                     </div>
                     <div class="form-group">
                         <label for="PasswordInput"><strong>Password:</strong></label>
@@ -65,7 +65,36 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Body
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label fas fa-user" for="registerUsername">&nbsp;Username:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="registerUsername" placeholder="Input New Username">
+                        </div>
+                        <div class="col-sm-2" id="infoUsername">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label fas fa-key" for="registerPassword">&nbsp;Password:</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Input Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label fas fa-key" for="registerConfirmPassword">&nbsp;Confirm:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password">
+                        </div>
+                        <div class="col-sm-2" id="infoConfirm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label fas fa-mail-bulk" for="registerEmail">&nbsp;Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="registerEmail" placeholder="Input Email">
+                        </div>
+                        <div class="col-sm-2" id="infoEmail">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
