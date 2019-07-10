@@ -31,10 +31,24 @@
 {% endblock %}
 {% block content %}
     {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning alert-dismissible" style="height: 50px;text-align: center">
-        {{ message|safe }}
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-    </div>
+        {% if level == 'SUCCESS' %}
+            <div class="alert alert-success alert-dismissible" style="height: 50px;text-align: center">
+                {{ message|safe }}
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+            </div>
+        {% endif %}
+        {% if level == 'WARNING' %}
+            <div class="alert alert-warning alert-dismissible" style="height: 50px;text-align: center">
+                {{ message|safe }}
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+            </div>
+        {% endif %}
+        {% if level == 'ERROR' %}
+            <div class="alert alert-danger alert-dismissible" style="height: 50px;text-align: center">
+                {{ message|safe }}
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+            </div>
+        {% endif %}
     {% endfor %}
     <div class="wrap">
         <div class="login">
