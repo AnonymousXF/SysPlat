@@ -34,4 +34,9 @@ def logout():
 
 @auth.route('/register', methods=['POST'])
 def register():
-    return 'ok'
+    username = request.values.get('username')
+    password = request.values.get('password')
+    confirm = request.values.get('confirm')
+    email = request.values.get('email')
+
+    return 'success'
