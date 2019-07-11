@@ -14,15 +14,15 @@ function PostRegisterInfo(url) {
         type: 'POST',
         url: url,
         data: data,
-        dataType: 'html',      //改为返回json，{'status':'messgge'}
+        dataType: 'json',
         success: function (data) {
             $('#registerModal').modal('hide');
-            if(data === 'success'){
-                html = "<div class=\"alert alert-success alert-dismissible\" style=\"height: 50px;text-align: center\">Register Successful!<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
+            if('success' in data){
+                let html = "<div class=\"alert alert-success alert-dismissible\" style=\"height: 50px;text-align: center\">" + data['success'] + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
                 $('#message').html(html);
             }
-            else{
-                html = "<div class=\"alert alert-warning alert-dismissible\" style=\"height: 50px;text-align: center\">Register Failed!Exist the same Username or Email!<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
+            if('failed' in data){
+                let html = "<div class=\"alert alert-warning alert-dismissible\" style=\"height: 50px;text-align: center\">" + data['failed'] + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
                 $('#message').html(html);
             }
         }

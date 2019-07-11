@@ -10,5 +10,16 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+
+@manager.command
+def deploy():
+    from flask_migrate import upgrade
+    from app.models import User
+
+    # upgrade
+    upgrade()
+    User.create_default_admin()
+
+
 if __name__ == '__main__':
     manager.run()
