@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 {% block title%}主页{% endblock %}
+{% block head %}
+<style>
+.bar{
+    height: 10%;
+}
+.wrap{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9rem;
+    color: #bdb7bf;
+}
+</style>
+{% endblock %}
 {% block content %}
+    <div class="bar">
     {% include "_navbar.html" %}
+    </div>
+    <div class="wrap">
+        <strong>Welcome</strong>
+    </div>
 {% endblock %}
