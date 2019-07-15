@@ -22,7 +22,6 @@
 .analysis{
     height: 75%;
     width: 100%;
-    background-color: #20c997;
 }
 </style>
 {% endblock %}
@@ -45,7 +44,7 @@
             <button class="btn btn-outline-primary" type="button" id="startAnalysis">Start Analysis</button>
         </div>
         <div class="analysis" id="nessus_result">
-            analysis area
+            {% include 'nessus_result.html' %}
         </div>
     </div>
 {% endblock %}
