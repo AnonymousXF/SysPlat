@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title%}Nessus扫描结果分析{% endblock %}
+{% block head %}
+<style>
+.bar{
+    height: 10%;
+}
+.wrap{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.upload{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c82333;
+}
+.analysis{
+    height: 80%;
+    width: 100%;
+    background-color: #20c997;
+}
+</style>
+{% endblock %}
+{% block content %}
+    <div class="bar">
+    {% include "_navbar.html" %}
+    </div>
+    <div class="wrap">
+        <div class="upload">
+            upload area!
+        </div>
+        <div class="analysis" id="nessus_result">
+            analysis area
+        </div>
+    </div>
+{% endblock %}
