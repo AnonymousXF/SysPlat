@@ -13,15 +13,14 @@
     margin-right: 100px;
 }
 .upload{
-    height: 20%;
+    height: 25%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #c82333;
 }
 .analysis{
-    height: 80%;
+    height: 75%;
     width: 100%;
     background-color: #20c997;
 }
@@ -33,7 +32,17 @@
     </div>
     <div class="wrap">
         <div class="upload">
-            upload area!
+            <h6>上传Nessus扫描结果文件：</h6>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="scanResultFile">
+                    <label class="custom-file-label" for="scanResultFile" aria-describedby="uploadBtn">Choose File</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="uploadBtn">Upload</button>
+                </div>
+            </div>
+            <button class="btn btn-outline-primary" type="button" id="startAnalysis">Start Analysis</button>
         </div>
         <div class="analysis" id="nessus_result">
             analysis area
