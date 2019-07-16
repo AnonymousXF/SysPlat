@@ -1,0 +1,9 @@
+plugin ID       Risk        Name
+111111          High        High_Vul_1
+222222          High        High_Vul_2
+33333           Medium      Medium_Vul_1
+444444          Medium      Medium_Vul_2
+555555          Low         Low_Vul_1
+666666          Low         Low_Vul_2
+777777          None        None_Vul_1
+888888          None        None_Vul_1
