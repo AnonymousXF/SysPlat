@@ -31,7 +31,7 @@ def nessus_analysis():
 
     # 返回分析结果
     result = analysis.analysis()
-    for key in result:
+    for key in result.keys():
         df = result[key]
         risk = analysis.get_values_of_column(df, 'Risk')
         plugin_id = analysis.get_values_of_column(df, 'Plugin ID')

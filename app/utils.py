@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
+from collections import OrderedDict
 
 
 class AnalysisNessus:
@@ -26,7 +27,7 @@ class AnalysisNessus:
         df = self.data_frame.loc[:, ['Plugin ID', 'Risk', 'Name']].copy()
 
         # 筛选出vul_level中相应漏洞等级的条目，并去除重复Plugin ID的条目
-        result = {}
+        result = OrderedDict()
         for level in self.vul_level:
             result[level] = df.loc[(df['Risk'].str.contains(level)), :].drop_duplicates(['Plugin ID'])
 
