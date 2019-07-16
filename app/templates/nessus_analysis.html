@@ -16,12 +16,15 @@
     height: 25%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .analysis{
     height: 75%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 </style>
 {% endblock %}
@@ -31,20 +34,32 @@
     </div>
     <div class="wrap">
         <div class="upload">
-            <h6>上传Nessus扫描结果文件：</h6>
-            <div class="input-group mb-3">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="scanResultFile">
-                    <label class="custom-file-label" for="scanResultFile" aria-describedby="uploadBtn">Choose File</label>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" id="uploadBtn">Upload</button>
+            <div class="col-6">
+                <h6>上传Nessus扫描结果文件：</h6>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="scanResultFile">
+                        <label class="custom-file-label text-truncate" for="scanResultFile" >Choose File</label>
+                    </div>
                 </div>
             </div>
-            <button class="btn btn-outline-primary" type="button" id="startAnalysis">Start Analysis</button>
+            <div class="col-6">
+                <h6>Vulnerability Level:</h6>
+                <select class="form-control" id="vul_level">
+                    <option>None</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Critical</option>
+                </select>
+            </div>
+            <button class="btn btn-outline-primary" type="button" id="startAnalysis" style="width: 100%">Start Analysis</button>
         </div>
         <div class="analysis" id="nessus_result">
             {% include 'nessus_result.html' %}
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
 {% endblock %}
