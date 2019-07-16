@@ -53,10 +53,11 @@
                     <option>Critical</option>
                 </select>
             </div>
-            <button class="btn btn-outline-primary" type="button" id="startAnalysis" style="width: 100%">Start Analysis</button>
+            <button class="btn btn-outline-primary" type="button" id="startAnalysis" style="width: 100%" onclick="Analysis('{{ url_for('api.nessus_analysis') }}')">
+                Start Analysis
+            </button>
         </div>
         <div class="analysis" id="nessus_result">
-            {% include 'nessus_result.html' %}
         </div>
     </div>
 {% endblock %}
