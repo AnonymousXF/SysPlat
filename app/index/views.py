@@ -10,8 +10,7 @@ def dashboard():
     return render_template("index.html", user=g.user)
 
 
-@index.route('/analysis/nessus', methods=['GET', 'POST'])
+@index.route('/analysis/nessus', methods=['GET'])
 @login_required
 def nessus_analysis():
-    if request.method == 'GET':
-        return render_template('nessus_analysis.html', user=g.user)
+    return render_template('nessus_analysis.html', user=g.user)
