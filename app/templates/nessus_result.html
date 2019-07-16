@@ -49,42 +49,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for key in result %}
+                    {% if result[key]|length > 0 %}
+                    {% for item in result[key] %}
                     <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
+                        {% if item[0] == 'Critical' %}
+                        <td style><span class="badge badge-danger" style="font-size: medium">{{ item[0] }}</span></td>
+                        {% endif %}
+                        {% if item[0] == 'High' %}
+                        <td style><span class="badge" style="background-color: #ff8000; font-size: medium">{{ item[0] }}</span></td>
+                        {% endif %}
+                        {% if item[0] == 'Medium' %}
+                        <td style><span class="badge badge-warning" style="font-size: medium">{{ item[0] }}</span></td>
+                        {% endif %}
+                        {% if item[0] == 'Low' %}
+                        <td style><span class="badge badge-success" style="font-size: medium">{{ item[0] }}</span></td>
+                        {% endif %}
+                        {% if item[0] == 'None' %}
+                        <td style><span class="badge badge-primary" style="font-size: medium">{{ item[0] }}</span></td>
+                        {% endif %}
+                        <td style>{{ item[1] }}</td>
+                        <td style>{{ item[2] }}</td>
                         <td style>Record Info</td>
                     </tr>
-                    <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
-                        <td style>Record Info</td>
-                    </tr>
-                    <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
-                        <td style>Record Info</td>
-                    </tr>
-                    <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
-                        <td style>Record Info</td>
-                    </tr>
-                    <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
-                        <td style>Record Info</td>
-                    </tr>
-                    <tr>
-                        <td style>High</td>
-                        <td style>12345</td>
-                        <td style>Vuln 1</td>
-                        <td style>Record Info</td>
-                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
