@@ -5,7 +5,7 @@ import tempfile
 import shutil
 import os
 from ..decorator import login_required
-from ..untils import AnalysisNessus
+from ..utils import AnalysisNessus
 from . import api
 from ..models import db
 
