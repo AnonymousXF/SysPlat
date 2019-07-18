@@ -1,18 +1,24 @@
 # -*- coding: utf-8 -*-
 from flask import render_template, request, session, current_app
 from werkzeug.utils import secure_filename
+import json
 import tempfile
 import shutil
 import os
 from ..decorator import login_required
 from ..utils import AnalysisNessus
 from . import api
-from ..models import db
+from ..models import db, RecordInfo
 
 
 @api.route('/nessus_analysis', methods=['POST'])
 @login_required
 def nessus_analysis():
+    """
+    分析上传的csv格式的Nessus扫描结果
+    :return:
+    """
+    # 获取请求中上传的文件和参数
     f = request.files.get('file')
     level = request.values.get('level')
 
@@ -41,3 +47,43 @@ def nessus_analysis():
 
     return render_template('nessus_result.html', result=result)
 
+
+@api.route('/add_record', methods=['POST'])
+def add_record():
+    """
+    添加漏洞记录
+    :return:
+    """
+    # 获取请求中的参数
+    scan_tool = request.values.get('scanTool')
+    vul_level = request.values.get('vulLevel')
+    vul_name = request.values.get('vulName')
+    nessus_plugin_id = request.values.get('nessusPluginID')
+    vul_link = request.values.get('vulLink')
+    detail_info = request.values.get('detailInfo')
+    project = request.values.get('project')
+    if not all([vul_name, detail_info]):
+        return json.dumps({'warning': u'请填写必填项！'})
+    try:
+        if nessus_plugin_id != '':
+            new_record = RecordInfo(tool_for_vulnerability=scan_tool,
+                                    vulnerability_name=vul_name,
+                                    vulnerability_level=vul_level,
+                                    nessus_pluginID=int(nessus_plugin_id),
+                                    detail_info=detail_info,
+                                    record_project=project)
+            db.session.add(new_record)
+            db.session.commit()
+        else:
+            new_record = RecordInfo(tool_for_vulnerability=scan_tool,
+                                    vulnerability_name=vul_name,
+                                    vulnerability_level=vul_level,
+                                    vulnerable_link=vul_link,
+                                    detail_info=detail_info,
+                                    record_project=project)
+            db.session.add(new_record)
+            db.session.commit()
+    except Exception as e:
+        current_app.logger.error(e)
+        return json.dumps({'failed': '添加漏洞信息失败！'})
+    return json.dumps({'success': '添加漏洞信息成功！'})
