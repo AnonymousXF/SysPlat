@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title%}备案记录{% endblock %}
+{% block head %}
+<style>
+.bar{
+    height: 10%;
+}
+.wrap{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.toolbar{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+}
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detail{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #80bdff;
+}
+</style>
+{% endblock %}
+{% block content %}
+    <div class="bar">
+        {% include '_navbar.html' %}
+    </div>
+    <div class="wrap">
+        <div class="message" id="message">
+        </div>
+        <div class="toolbar">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRecordInfoModal"><span class="fa fa-plus"></span>&nbsp;添加备案信息</button>
+        </div>
+        <div class="detail">
+            detail
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="addRecordInfoModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">添加漏洞信息</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addRecord">
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <h6><b>扫描工具：</b></h6>
+                                <select class="form-control" name="scanTool" id="scanTool">
+                                    <option>Nessus</option>
+                                    <option>NSFOCUS</option>
+                                    <option>WebInspect</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <h6><b>漏洞等级：</b></h6>
+                                <select class="form-control" name="vulLevel" id="vulLevel">
+                                    <option>Critical</option>
+                                    <option>High</option>
+                                    <option>Medium</option>
+                                    <option>Low</option>
+                                    <option>None</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <h6><b>漏洞名称：（必填）</b></h6>
+                                <input class="form-control" type="text" name="vulName" id="vulName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <h6><b>Nessus Plugin ID：</b></h6>
+                                <input class="form-control" type="text" name="nessusPluginID" id="nessusPluginID">
+                            </div>
+                            <div class="col-7" style="display: flex;justify-content: center;align-items: center;">
+                                <span class="fa fa-sm fa-info"></span>
+                                <span style="font-size: 0.5rem;">&nbsp;（仅针对Nessus漏洞信息，其他扫描工具扫出的漏洞无需填写。）</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-7">
+                                <h6><b>漏洞链接：</b></h6>
+                                <textarea class="form-control"  rows="3" placeholder="多个链接之间用分号;分隔。" name="vulLink" id="vulLink"></textarea>
+                            </div>
+                            <div class="col-5" style="display: flex;justify-content: center;align-items: center;">
+                                <span class="fa fa-sm fa-info"></span>
+                                <span style="font-size: 0.5rem;">&nbsp;（仅针对WebInspect漏洞，需填写漏洞链接。）</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <h6><b>详情说明：（必填）</b></h6>
+                                <textarea class="form-control" rows="3" name="detailInfo" id="detailInfo"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <h6><b>所属项目：</b></h6>
+                                <select class="form-control" name="project" id="project">
+                                    <option>VMAX-O</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="AddRecordInfo('{{ url_for('api.add_record') }}')">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+{% endblock %}
