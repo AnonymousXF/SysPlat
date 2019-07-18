@@ -2,6 +2,7 @@
 from flask import render_template, request, session, g
 from . import index
 from ..decorator import login_required
+from ..models import db, RecordInfo
 
 
 
@@ -20,6 +21,8 @@ def nessus_analysis():
 @index.route('/record_info', methods=['GET', 'POST'])
 @login_required
 def record_info():
-    return render_template('record_info.html', user=g.user)
+    if request.method == 'GET':
+        records = RecordInfo.query.all()
+        return render_template('record_info.html', user=g.user, records=records)
 
 

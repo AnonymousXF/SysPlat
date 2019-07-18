@@ -30,7 +30,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #80bdff;
 }
 </style>
 {% endblock %}
@@ -46,12 +45,99 @@
         </div>
         <div class="detail">
             <div class="bootstrap-table">
-                <div class="fixed-table-container fixed-height" style="height: 550px; padding-bottom: 49px">
+                <div class="fixed-table-container fixed-height" style="height: 480px; padding-bottom: 70px">
                     <div class="fixed-table-header" style="margin-right: 0px;">
-
+                        <table class="table table-bordered table-hover" style="width: 1184px;">
+                            <thead style="background-color: #20c997;text-align: center">
+                                <tr>
+                                    <th data-field="scanTool">
+                                        <div class="th-inner">漏洞发现工具</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulLevel">
+                                        <div class="th-inner">漏洞等级</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulName">
+                                        <div class="th-inner">漏洞名称</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="nessusPluginID">
+                                        <div class="th-inner">Nessus Plugin ID<br>(仅Nessus)</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulLink">
+                                        <div class="th-inner">漏洞链接<br>(仅WebInspect)</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="detailInfo">
+                                        <div class="th-inner">详情</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="project">
+                                        <div class="th-inner">项目</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                     <div class="fixed-table-body">
-
+                        <table id="recordInfo" data-toggle="bootstrap-table" data-height="480" class="table table-bordered table-hover" style="margin-top: -70px;width: 1184px;word-break: break-all">
+                            <thead>
+                                <tr>
+                                    <th data-field="scanTool">
+                                        <div class="th-inner">漏洞发现工具</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulLevel">
+                                        <div class="th-inner">漏洞等级</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulName">
+                                        <div class="th-inner">漏洞名称</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="nessusPluginID">
+                                        <div class="th-inner">Nessus Plugin ID<br>(仅Nessus)</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                    <th data-field="vulLink">
+                                        <div class="th-inner">漏洞链接<br>(仅WebInspect)</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="detailInfo">
+                                        <div class="th-inner">详情</div>
+                                        <div class="fht-cell" style="width: 260px;"></div>
+                                    </th>
+                                    <th data-field="project">
+                                        <div class="th-inner">项目</div>
+                                        <div class="fht-cell" style="width: 100px;"></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for record in records %}
+                                <tr>
+                                    <td>{{ record.tool_for_vulnerability }}</td>
+                                    <td>{{ record.vulnerability_level }}</td>
+                                    <td>{{ record.vulnerability_name }}</td>
+                                    {% if record.nessus_pluginID == -1 %}
+                                    <td>无</td>
+                                    {% else %}
+                                    <td>{{ record.nessus_pluginID }}</td>
+                                    {% endif %}
+                                    {% if record.vulnerable_link == None %}
+                                    <td>无</td>
+                                    {% else %}
+                                    <td>{{ record.vulnerable_link }}</td>
+                                    {% endif %}
+                                    <td>{{ record.detail_info }}</td>
+                                    <td>{{ record.record_project }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
