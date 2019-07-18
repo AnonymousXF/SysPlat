@@ -6,19 +6,19 @@
             <table class="table table-bordered table-hover" style="width: 1374px">
                 <thead style="background-color: #20c997">
                     <tr>
-                        <th style data-field="level">
+                        <th data-field="level">
                             <div class="th-inner">Level</div>
                             <div class="fht-cell" style="width: 137px;"></div>
                         </th>
-                        <th style data-field="pluginID">
+                        <th data-field="pluginID">
                             <div class="th-inner">Plugin ID</div>
                             <div class="fht-cell" style="width: 137px;"></div>
                         </th>
-                        <th style data-field="vulName">
+                        <th data-field="vulName">
                             <div class="th-inner">Vulnerability Name</div>
                             <div class="fht-cell" style="width: 548px;"></div>
                         </th>
-                        <th style data-field="analysisResult">
+                        <th data-field="analysisResult">
                             <div class="th-inner">Analysis Result</div>
                             <div class="fht-cell" style="width: 548px;"></div>
                         </th>
@@ -30,19 +30,19 @@
             <table id="nessusAnalysisResult" data-toggle="bootstrap-table" data-height="350" class="table table-bordered table-hover" style="margin-top: -49px;width: 1374px">
                 <thead>
                     <tr>
-                        <th style data-field="level">
+                        <th data-field="level">
                             <div class="th-inner">Level</div>
                             <div class="fht-cell" style="width: 137px;"></div>
                         </th>
-                        <th style data-field="pluginID">
+                        <th data-field="pluginID">
                             <div class="th-inner">Plugin ID</div>
                             <div class="fht-cell" style="width: 137px;"></div>
                         </th>
-                        <th style data-field="vulName">
+                        <th data-field="vulName">
                             <div class="th-inner">Vulnerability Name</div>
                             <div class="fht-cell" style="width: 548px;"></div>
                         </th>
-                        <th style data-field="analysisResult">
+                        <th data-field="analysisResult">
                             <div class="th-inner">Analysis Result</div>
                             <div class="fht-cell" style="width: 548px;"></div>
                         </th>
@@ -54,23 +54,23 @@
                     {% for item in result[key] %}
                     <tr>
                         {% if item[0] == 'Critical' %}
-                        <td style><span class="badge badge-danger" style="font-size: medium">{{ item[0] }}</span></td>
+                        <td><span class="badge badge-danger" style="font-size: medium">{{ item[0] }}</span></td>
                         {% endif %}
                         {% if item[0] == 'High' %}
-                        <td style><span class="badge" style="background-color: #ff8000; font-size: medium">{{ item[0] }}</span></td>
+                        <td><span class="badge" style="background-color: #ff8000; font-size: medium">{{ item[0] }}</span></td>
                         {% endif %}
                         {% if item[0] == 'Medium' %}
-                        <td style><span class="badge badge-warning" style="font-size: medium">{{ item[0] }}</span></td>
+                        <td><span class="badge badge-warning" style="font-size: medium">{{ item[0] }}</span></td>
                         {% endif %}
                         {% if item[0] == 'Low' %}
-                        <td style><span class="badge badge-success" style="font-size: medium">{{ item[0] }}</span></td>
+                        <td><span class="badge badge-success" style="font-size: medium">{{ item[0] }}</span></td>
                         {% endif %}
                         {% if item[0] == 'None' %}
-                        <td style><span class="badge badge-primary" style="font-size: medium">{{ item[0] }}</span></td>
+                        <td><span class="badge badge-primary" style="font-size: medium">{{ item[0] }}</span></td>
                         {% endif %}
-                        <td style>{{ item[1] }}</td>
-                        <td style>{{ item[2] }}</td>
-                        <td style>Record Info</td>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[2] }}</td>
+                        <td>Record Info</td>
                     </tr>
                     {% endfor %}
                     {% endif %}
