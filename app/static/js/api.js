@@ -1,3 +1,4 @@
+// 注册账户
 function PostRegisterInfo(url) {
     let username = $('#registerUsername').val();
     let password = $('#registerPassword').val();
@@ -29,12 +30,15 @@ function PostRegisterInfo(url) {
     });
 }
 
+
+// 更新上传文件输入框的显示内容
 $('.custom-file-input').on('change', function () {
    let filename = $(this).val().split('\\').pop();
    $(this).next('.custom-file-label').addClass("selected").html(filename);
 });
 
 
+// 分析csv格式的Nessus扫描结果
 function Analysis(url){
     // 获取选择的文件
     let file_obj = $('#scanResultFile').get(0).files[0];
@@ -59,4 +63,40 @@ function Analysis(url){
             $('#nessus_result').html('分析失败！');
         }
     });
+}
+
+
+// 新增漏洞记录
+function AddRecordInfo(url) {
+    let form_data = $('#addRecord').serialize();
+    console.log(form_data);
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: form_data,
+        dataType: 'json',
+        success: function (data) {
+            $('#addRecordInfoModal').modal('hide');
+            if('success' in data){
+                let html = "<div class=\"alert alert-success alert-dismissible\" style=\"height: 50px;text-align: center\">" + data['success'] + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
+                $('#message').html(html);
+                $('#vulName').val("");
+                $('#nessusPluginID').val("");
+                $('#vulLink').val("");
+                $('#detailInfo').val("");
+            }
+            if('failed' in data){
+                let html = "<div class=\"alert alert-danger alert-dismissible\" style=\"height: 50px;text-align: center\">" + data['failed'] + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
+                $('#message').html(html);
+                $('#vulName').val("");
+                $('#nessusPluginID').val("");
+                $('#vulLink').val("");
+                $('#detailInfo').val("");
+            }
+            if('warning' in data){
+                let html = "<div class=\"alert alert-warning alert-dismissible\" style=\"height: 50px;text-align: center\">" + data['warning'] + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\"><span aria-hidden=\"true\">&times;</span></button></div>";
+                $('#message').html(html);
+            }
+        }
+    })
 }
