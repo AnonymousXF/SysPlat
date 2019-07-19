@@ -100,3 +100,9 @@ function AddRecordInfo(url) {
         }
     })
 }
+
+
+// 刷新当前页面
+function refresh() {
+    window.location.reload();
+}
