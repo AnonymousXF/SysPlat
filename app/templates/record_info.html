@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title%}备案记录{% endblock %}
+{% block title%}漏洞信息记录{% endblock %}
 {% block head %}
 <style>
 .bar{
@@ -41,11 +41,12 @@
         <div class="message" id="message">
         </div>
         <div class="toolbar">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRecordInfoModal"><span class="fa fa-plus"></span>&nbsp;添加备案信息</button>
+            <button type="button" class="btn btn-primary" onclick="refresh()" style="margin-right: 20px"><span class="fa fa-sync"></span>&nbsp;刷新</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRecordInfoModal" style="margin-right: 20px"><span class="fa fa-plus"></span>&nbsp;添加漏洞信息</button>
         </div>
         <div class="detail">
             <div class="bootstrap-table">
-                <div class="fixed-table-container fixed-height" style="height: 480px; padding-bottom: 70px">
+                <div class="fixed-table-container fixed-height" style="height: 500px; padding-bottom: 70px">
                     <div class="fixed-table-header" style="margin-right: 0px;">
                         <table class="table table-bordered table-hover" style="width: 1184px;">
                             <thead style="background-color: #20c997;text-align: center">
@@ -68,22 +69,18 @@
                                     </th>
                                     <th data-field="vulLink">
                                         <div class="th-inner">漏洞链接<br>(仅WebInspect)</div>
-                                        <div class="fht-cell" style="width: 260px;"></div>
+                                        <div class="fht-cell" style="width: 310px;"></div>
                                     </th>
                                     <th data-field="detailInfo">
                                         <div class="th-inner">详情</div>
-                                        <div class="fht-cell" style="width: 260px;"></div>
-                                    </th>
-                                    <th data-field="project">
-                                        <div class="th-inner">项目</div>
-                                        <div class="fht-cell" style="width: 100px;"></div>
+                                        <div class="fht-cell" style="width: 310px;"></div>
                                     </th>
                                 </tr>
                             </thead>
                         </table>
                     </div>
                     <div class="fixed-table-body">
-                        <table id="recordInfo" data-toggle="bootstrap-table" data-height="480" class="table table-bordered table-hover" style="margin-top: -70px;width: 1184px;word-break: break-all">
+                        <table id="recordInfo" data-toggle="bootstrap-table" data-height="500" class="table table-bordered table-hover" style="margin-top: -70px;width: 1184px;word-break: break-all">
                             <thead>
                                 <tr>
                                     <th data-field="scanTool">
@@ -104,15 +101,11 @@
                                     </th>
                                     <th data-field="vulLink">
                                         <div class="th-inner">漏洞链接<br>(仅WebInspect)</div>
-                                        <div class="fht-cell" style="width: 260px;"></div>
+                                        <div class="fht-cell" style="width: 310px;"></div>
                                     </th>
                                     <th data-field="detailInfo">
                                         <div class="th-inner">详情</div>
-                                        <div class="fht-cell" style="width: 260px;"></div>
-                                    </th>
-                                    <th data-field="project">
-                                        <div class="th-inner">项目</div>
-                                        <div class="fht-cell" style="width: 100px;"></div>
+                                        <div class="fht-cell" style="width: 310px;"></div>
                                     </th>
                                 </tr>
                             </thead>
@@ -133,7 +126,6 @@
                                     <td>{{ record.vulnerable_link }}</td>
                                     {% endif %}
                                     <td>{{ record.detail_info }}</td>
-                                    <td>{{ record.record_project }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
