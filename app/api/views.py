@@ -35,7 +35,7 @@ def nessus_analysis():
     analysis = AnalysisNessus(os.path.join(tmpdir, filename), level)
     shutil.rmtree(tmpdir)
 
-    # 返回分析结果
+    # 返回筛选出来的扫描结果
     result = analysis.analysis()
     for key in result.keys():
         df = result[key]
@@ -45,10 +45,16 @@ def nessus_analysis():
         zipped = zip(risk, plugin_id, name)
         result[key] = zipped
 
-    return render_template('nessus_result.html', result=result)
+    records = RecordInfo.query.filter_by(tool_for_vulnerability='Nessus', record_project='VMAX-O').all()
+    d = {}
+    for record in records:
+        d[record.nessus_pluginID] = record.detail_info
+
+    return render_template('nessus_result.html', result=result, dict=d)
 
 
 @api.route('/add_record', methods=['POST'])
+@login_required
 def add_record():
     """
     添加漏洞记录
