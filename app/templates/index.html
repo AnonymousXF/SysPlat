@@ -2,6 +2,10 @@
 {% block title%}主页{% endblock %}
 {% block head %}
 <style>
+body{
+    display: flex;
+    flex-direction: column;
+}
 .bar{
     height: 10%;
 }
@@ -10,8 +14,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 9rem;
-    color: #bdb7bf;
+    margin-top: 2%;
+}
+.env-table{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.env-table .toolbar{
+    height: 10%;
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 </style>
 {% endblock %}
@@ -20,6 +36,49 @@
     {% include "_navbar.html" %}
     </div>
     <div class="wrap">
-        <strong>Welcome</strong>
+        <div class="env-table">
+            <div style="height: 10%; color: #4CAF50">
+                <h2>Environment Info</h2>
+            </div>
+            <div class="toolbar">
+                <button class="btn btn-outline-success" style="margin-right: 1%">
+                    <span class="fa fa-plus"></span>&nbsp;Add Environment
+                </button>
+                <button class="btn btn-outline-success" style="margin-right: 1%">
+                    <span class="fa fa-download"></span>&nbsp;Download Template
+                </button>
+                <button class="btn btn-outline-success" style="margin-right: 1%">
+                    <span class="fa fa-sync"></span>&nbsp;Refresh
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table data-toggle="table" data-height="500" class="table table-bordered table-hover" style="word-break: break-word">
+                    <thead style="background-color: #28A745; color: #ffffff">
+                        <tr>
+                            <th>Head-1</th>
+                            <th>Head-2</th>
+                            <th>Head-3</th>
+                            <th>Head-4</th>
+                            <th>Head-5</th>
+                            <th>Head-6</th>
+                            <th>Head-7</th>
+                            <th>Head-8</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row1 - Column1</td>
+                            <td>Row1 - Column2</td>
+                            <td>Row1 - Column3</td>
+                            <td>Row1 - Column4</td>
+                            <td>Row1 - Column5</td>
+                            <td>Row1 - Column6</td>
+                            <td>Row1 - Column7</td>
+                            <td>Row1 - Column8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 {% endblock %}
